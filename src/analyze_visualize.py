@@ -43,6 +43,8 @@ def plot_EV_rate_info():
     )
     # save the figure as html for interaction
     fig.write_html("../results/plots/EV_adoption_rate_info.html")
+    # save the figure as PNG for github use
+    fig.write_image("../results/plots/EV_adoption_rate_info.png")
 
 ########## Part 2: Linear Regression graphs ##########
 def plot_non_age_factor():
@@ -165,15 +167,15 @@ def stats_table_df():
     stats_df = pd.DataFrame(results)
     return stats_df
 
-# save the dataframe for ploting
-stats_df = stats_table_df()
-
-def stats_table():
+def plot_stats_table():
     """
     This function will plot a table that have all factor's
     r-value and p-value for comparasion by using plotly.graph_objects
     refering plotly library
     """
+    # save the dataframe for ploting
+    stats_df = stats_table_df()
+
     # plot the table
     fig = go.Figure(data=[go.Table(
         # header row is the columns's name of the table_df
@@ -196,4 +198,4 @@ plot_age_factor()
 plot_distribution()
 
 # stats table
-stats_table()
+plot_stats_table()

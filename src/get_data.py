@@ -129,7 +129,7 @@ def get_acs_raw():
     df = pd.DataFrame(data[1:], columns=data[0])
     df.to_csv("../data/raw/acs_raw.csv", index=False)
 
-########## Part 4: Calling Functions to Get Raw Data ##########
+########## Part 4: Function Calling ##########
 # State name and its abbr
 state_name = "https://www.faa.gov/air_traffic/publications/atpubs/cnt_html/appendix_a.html"
 web_scrape(state_name, "state_name_raw", 1)
