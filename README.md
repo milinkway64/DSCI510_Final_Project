@@ -6,6 +6,8 @@ This project is designed to answer the question: **What factors impact EV adopti
 
 Five datasets are used to analyze the question with a total of eight factors, including `gas price`, `charging station counts`, `income`, `education level`, and four `age group` variables. After cleaning and merging the data, visualizations are generated to examine the relationships between these factors and EV adoption rates.
 
+All Dataset usage and python library guidance will be cited in the report.
+
 ### Repository Structure/File Routine
 In this repository, there are 3 major folders and several supportive files.
 
