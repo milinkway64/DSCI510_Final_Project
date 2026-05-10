@@ -74,6 +74,13 @@ python3 get_data.py
 ```
 All Raw data files will stored in `data/raw` folder accordingly.
 
+***PS.*** There is a small chance that if a Error raise for `web_scrape(gas_price, "gas_price_raw", 2)` due to changes in the source website, please open the following link:
+
+https://www.visualcapitalist.com/mapped-gas-prices-in-every-u-s-state/
+
+Then update the URL assigned to the `gas_price` variable (line 122 in the script).  
+After updating, save the file and rerun the script.
+
 ---
 
 # `clean_data.py`

@@ -42,21 +42,37 @@ def web_scrape(url:str, file_name:str, table_nums:int):
             file.write(item + "\n")
 
 ########## Part 2: Using Pandas to Extract data ##########
-def pds_extract(url:str, file_name:str):
+def ev_reg_raw():
     """
     This function will extract data of EV related data from afdc.energy.gov
     Using pandas to get the dataframe
     url is input of the target web link
     file_name is used to set the file path name
     """
+    # data original link
+    url = "https://afdc.energy.gov/vehicle-registration?year=2023"
     # by using pd.read_html() to extract tables from the web page
     tables = pd.read_html(url)
     # select the target table store in df
     df = tables[0]
     # create the raw data file path
-    file_path = "../data/raw/" + file_name + ".csv"
+    file_path = "../data/raw/ev_reg_raw.csv"
     # save the df into a csv file
     df.to_csv(file_path, index=False)
+
+def ev_port_raw():
+    """
+    This function is designed to extrace excel data of ev charging ports in 2023
+    Save the data into a csv file
+    """
+    # link for ev ports in 2023
+    url = "https://afdc.energy.gov/files/docs/historical-station-counts.xlsx?year=2023"
+    # since the data is in excel type
+    # using pd.read_excel to read and dataframe
+    # and the sheet name is 2023
+    df = pd.read_excel(url, sheet_name="2023", skiprows=3, skipfooter=6)
+    # store the file as the following path
+    df.to_csv("../data/raw/ev_port_raw.csv",index=False)
 
 ########## Part 3: 2023 ACS Extraction ##########
 # 2023 link pre-setup
@@ -123,12 +139,10 @@ gas_price = "https://www.visualcapitalist.com/mapped-gas-prices-in-every-u-s-sta
 web_scrape(gas_price, "gas_price_raw", 2)
 
 # EV car registration in 2023
-ev_reg = "https://afdc.energy.gov/vehicle-registration?year=2023"
-pds_extract(ev_reg, "ev_reg_raw")
+ev_reg_raw()
 
 # EV ports counts in 2023
-ev_port = "https://afdc.energy.gov/stations/states?count=total&include_temporarily_unavailable=false&date=2023-12-31"
-pds_extract(ev_port, "ev_port_raw")
+ev_port_raw()
 
 # 2023 ACS data
 get_acs_raw()
